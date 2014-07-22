@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="labelEngineApp">
+<head>
+    <meta charset="utf-8">
+    <title>BO Moteur de mocks</title>
+
+    <link rel="stylesheet" href="static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/app.css">
+    <link rel="stylesheet" href="static/css/confirm-modal.css">
+
+    <script src="static/commons/js/jquery-1.10.2.min.js"></script>
+    <script src="static/commons/js/angular.min.js"></script>
+    <script src="static/commons/js/angular-ui-router.min.js"></script>
+    <script src="static/commons/js/ui-bootstrap-tpls-0.6.0.min.js"></script>
+    <script src="static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="static/commons/js/underscore.min.js"></script>
+    <script src="static/commons/js/ui-ace.min.js"></script>
+    <script src="static/commons/js/ace/ace.js"></script>
+
+    <script src="static/app.js"></script>
+    <script src="static/directive/criteria-values/criteria-values.js"></script>
+    <script src="static/directive/label-display/label-display.js"></script>
+    <script src="static/directive/confirm-modal/confirm-modal.js"></script>
+    <script src="static/modules/mock/mock.js"></script>
+</head>
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a ui-sref="dashboard" class="navbar-brand">Dyna-mock</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li ng-class="{ active: $state.includes('mock') }"><a ui-sref="mock.list">Mocks</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div ui-view></div>
+    </div>
+    
+
+    <confirm-modal></confirm-modal> 
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<div ng-controller="MockUpdateCtrl">
+
+	<form class="form-horizontal" role="form" ng-submit="submit()" name="labelForm">
+		<div class="form-group" style="text-align: right;">
+			<button type="submit" class="btn btn-default">Mettre à jour</button>
+		</div>
+
+		<div class="row col-lg-12" style="background-color: #ECEBFF; padding: 12px; margin-bottom: 24px;">
+			<div class="form-group">
+				<label class="col-lg-2 control-label" for="mockId" style="font-weight: bold">Id</label>
+				<div class="col-lg-10">
+					<input type="text" class="form-control" name="id" id="mockId" ng-model="mock.id" disabled />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-2 control-label" for="mockNamespace" style="font-weight: bold">Namespace</label>
+				<div class="col-lg-10">
+					<input type="text" class="form-control" name="id" id="mockNamespace" ng-model="mock.namespace" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-2 control-label" for="mockName" style="font-weight: bold">Nom</label>
+				<div class="col-lg-10">
+					<input type="text" class="form-control" name="id" id="mockName" ng-model="mock.name" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="description" class="col-lg-2 control-label">Description</label>
+				<div class="col-lg-10">
+					<textarea class="form-control" id="description" ng-model="mock.description"></textarea>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="longDescription" class="col-lg-2 control-label">Description longue</label>
+				<div class="col-lg-10">
+					<textarea class="form-control" id="longDescription" ng-model="mock.longDescription"></textarea>
+				</div>
+			</div>
+		</div>
+
+		<div class="row col-lg-12" style="background-color: #D6D4FF; padding: 12px; margin-bottom: 24px;">
+			<div class="form-group">
+				<label class="col-lg-2 control-label" for="mockRequestBodyPattern" style="font-weight: bold">Pattern corps</label>
+				<div class="col-lg-10">
+					<input type="text" class="form-control" name="id" id="mockRequestBodyPattern" ng-model="mock.request.bodyPattern" />
+				</div>
+			</div>
+		</div>
+
+		<div class="row col-lg-12" style="background-color: #333; padding: 12px; margin-bottom: 24px;">
+			<div ui-ace="{mode: 'xml', useWrapMode: true}" ng-model="mock.response.body" style="width: 1110px; min-height: 600px;"></div>
+		</div>
+
+		<div class="form-group" style="text-align: right;">
+			<button type="submit" class="btn btn-default">Mettre à jour</button>
+		</div>
+	</form>
+
+	<div class="row col-lg-12">
+		<pre>{{mock | stringify}}</pre>
+	</div>
+
+</div>

@@ -1,0 +1,46 @@
+<div class="label-test-result">
+    <style>
+        .label-test-result-type {
+            padding: 6px;
+            background-color: #888;
+            width: 75px;
+            margin: 0;
+            text-align: center;
+            height: 30px;
+            font-weight: bold;
+        }
+
+        .label-test-result-value {
+            padding: 6px;
+            background-color: #FFF;
+            margin: 0;
+        }
+
+        .label-test-result table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+    </style>
+    <div>
+        <table>
+            <tr>
+                <td class="label-test-result-type">
+                    <span ng-show="label.html">HTML</span>
+                    <span ng-show="label.cmsUrl">cmsUrl</span>
+                </td>
+                <td class="label-test-result-value">
+                    <iframe id="result-iframe"
+                            ng-if="label.html"
+                            ng-attr-srcdoc="{{label.html | bolHtml}}"
+                            ng-style="{width: !size.x?'100%':size.x, height: !size.y?innerSize.y:size.y}"
+                            style="border: 1px #101010 dashed; box-sizing: content-box;"></iframe>
+                    <!--<div ng-if="label.html" ng-bind-html="safeHtml"></div>-->
+                    <div ng-if="label.cmsUrl">
+                         <tiilta-bloc bloc-url="label.cmsUrl" />
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

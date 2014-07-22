@@ -1,0 +1,9 @@
+<div ng-dblclick="switchMode()" style="width: 100%; min-height: 30px;">
+    <input type="text" ng-model="stringValues" ng-keypress="switchAndPrevent($event)" ng-show="inputMode" ng-list ng-pattern="/^[a-zA-Z0-9_,\. -]+$/" style="width: 100%; background-color: #101010; color: #FAFAFA;"/>
+    <div ng-show="!inputMode">
+        <div ng-repeat="value in values"
+             ng-click="select(value)"
+             ng-class="{'criteria-values-selected': selected === value, 'criteria-value-bool': typeBool(value), 'criteria-value-number': typeNum(value)}"
+             class="criteria-values-value">{{value}}</div>
+    </div>
+</div>

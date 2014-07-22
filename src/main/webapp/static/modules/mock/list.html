@@ -1,0 +1,22 @@
+<div ng-controller="MockListCtrl">
+
+    <table class="table table-striped">
+        <tr>
+            <th style="width: 30px;"><a ui-sref="mock.upsert({mockId: tempId})"><span class="glyphicon glyphicon-plus"></span></a></th>
+            <th style="width: 225px;">Namespace<br><input ng-model="search.namespace"></th>
+			<th style="width: 225px;">Nom<br><input ng-model="search.name"></th>
+            <th>Description<br><input ng-model="search.description"></th>
+			<th>Modif</th>
+        </tr>
+        <tr ng-repeat="mock in mocks | filter:search:strict | orderBy:'name'">
+            <td>
+                <a ui-sref="mock.upsert({mockId: mock.id})"><span class="glyphicon glyphicon-pencil"></span></a><br>
+                <a ng-click="delete(mock.id)" style="cursor: pointer;"><span class="glyphicon glyphicon-trash" style="color: red;"></span></a>
+            </td>
+            <td style="font-size: 10px; font-weight: bold;">{{mock.namespace}}</td>
+			<td style="font-size: 10px; font-weight: bold;">{{mock.name}}</td>
+            <td style="font-size: 10px;"><span ng-bind-html="mock.description | nl2br"></span></td>
+			<td style="font-size: 10px; font-weight: bold;">{{mock.update | date:'yyyy-MM-dd HH:mm'}}</td>
+        </tr>
+    </table>
+</div>

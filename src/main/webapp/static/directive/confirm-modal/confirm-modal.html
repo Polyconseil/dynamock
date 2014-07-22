@@ -1,0 +1,22 @@
+<div class="generic-layer-container" ng-show="message" >
+    <div class="generic-layer" style="">
+    <!-- header/close section -->
+        <div class="layer-close">
+            <a ng-click="closeLayer();" class="bolmLink">
+                <img  id="" class="button" src="static/commons/img/picto/croix_fermer.png" />
+            </a>
+        </div>
+        <div class=layer-header>
+            <div class="txtSfrBold txt25"> {{message.headerContent}} </div> 
+        </div>
+        <!-- layer content --> 
+        <div class="layer-content" class="heavyPadding">
+            {{message.bodyContent}}
+        </div>
+        <div class="layer-close">
+            <button type="submit" class="btn btn-default" ng-click="closeLayer();">
+                <span class="txtSfrBold txt25"> Ok </span> 
+            </button>
+        </div>
+    </div>
+</div>

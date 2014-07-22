@@ -1,0 +1,161 @@
+.modal-body {
+	overflow: hidden;
+}
+
+.editorBody {
+	border: '1px dashed #BBBBBB';
+}
+
+.roleUserCtnr .roleUser,.roleAdminCtnr .roleAdmin,.roleManagerCtnr .roleManager
+	{
+	display: inline;
+}
+
+.role {
+	display: none;
+}
+
+.foldedGroup .foldedUnvisible, .unfoldedGroup .unfoldedUnvisible{
+	display: none;
+}
+
+tr:first-child .firstRowHidden,
+tr:last-child .lastRowHidden,
+.currentConfigurationCtnr .currentConfigurationHidden, 
+.nonCurrentConfigurationCtnr .nonCurrentConfigurationHidden,  
+.activationOkCtnr .activationOkHidden, 
+.activationKoCtnr .activationKoHidden, 
+.orderingBlockCtnr .orderingBlockHidden, 
+.nonOrderingBlockCtnr .nonOrderingBlockHidden, 
+.addingBlockCtnr .addingBlockHidden, 
+.nonAddingBlockCtnr .nonAddingBlockHidden, 
+.removingBlockCtnr .removingBlockHidden, 
+.nonRemovingBlockCtnr .nonRemovingBlockHidden, 
+.templatingBlockCtnr .templatingBlockHidden, 
+.nonTemplatingBlockCtnr .nonTemplatingBlockHidden, 
+.conditioningBlockCtnr .conditioningBlockHidden, 
+.nonConditioningBlockCtnr .nonConditioningBlockHidden {
+	display: none;
+}
+
+.iconLink {
+	margin: 2px;
+}
+
+.activationCtnr {
+	font-size: 13px;
+	line-height: 1.2;
+}
+
+.chartsCtnr hr { 
+	border-top: solid 1px #ddd;
+	margin: 0 10px;
+}
+
+.chartCtnr tbody tr td { 
+	border: none;
+	font-size: 13px;
+	line-height: 1.2;
+	background-color: transparent;
+	padding: 4px 8px;
+}
+
+.chartCtnr tbody > tr:nth-child(odd) > td {
+	background-color: transparent;
+}
+
+.chartCtnr .chartField { 
+	text-decoration: underline;
+}
+
+.fragmentDescription {
+	margin-bottom: 5px;
+}
+
+.fragmentCtnr {
+	margin-bottom: 10px;
+}
+
+.fragmentNonHtml {
+	border-bottom: 1px dashed #BBBBBB;
+}
+
+.fragmentHtml {
+	border: 1px dashed #BBBBBB;
+	background-color: white;
+	min-height: 15px;
+}
+
+
+
+
+
+body .htmlContent {
+	margin-bottom: 10px;
+}
+
+body .htmlZone {
+	border: 1px dashed #BBBBBB;
+	background-color: white;
+}
+
+body .highBMargin {
+	margin-bottom: 50px;
+}
+
+body .lightBMargin {
+	margin-bottom: 8px;
+}
+
+body .lightTMargin {
+	margin-top: 8px;
+}
+
+body .vAlignMiddle {
+	vertical-align: middle;
+}
+
+.table thead tr.subGroupHeader>th {
+	background-color: rgb(149, 186, 197);
+	border: none;
+	vertical-align:middle;
+	border-bottom: 1px solid #DDDDDD;
+}
+
+.table thead tr.groupHeader>th {
+	background-color: rgb(156, 145, 162);
+	border: none;
+	vertical-align:middle;
+}
+
+.table tr.groupItemElement:last-child>td {
+	border-bottom: 2px solid rgb(156, 145, 162);
+}
+
+.table tr.subGroupLastItemElement>td {
+	border-bottom: 2px solid rgb(149, 186, 197);
+}
+
+.table tbody tr.subGroupItemElement>td:first-child {
+	border-left: 2px solid rgb(149, 186, 197);
+}
+
+.table tbody tr.subGroupItemElement>td:last-child {
+	border-right: 2px solid rgb(149, 186, 197);
+}
+
+.table tbody tr.groupItemElement>td:first-child {
+	border-left: 2px solid rgb(156, 145, 162);
+}
+
+.table tbody tr.groupItemElement>td:last-child {
+	border-right: 2px solid rgb(156, 145, 162);
+}
+
+.table td.subGroupItemItem {
+	padding:0;
+}
+
+.table.subGroupItemItemTable {
+	margin:0;
+}
