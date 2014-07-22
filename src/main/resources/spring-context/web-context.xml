@@ -12,7 +12,7 @@
 
 	<mvc:annotation-driven />
 	<context:annotation-config />
-	<context:component-scan base-package="com.sfr.bol" annotation-config="true" />
+	<context:component-scan base-package="fr.polyconseil.mock" annotation-config="true" />
 
 	<mvc:view-controller path="/" view-name="/static/index.html" />
 	<mvc:resources mapping="/static/**" location="/static/" />
@@ -35,17 +35,6 @@
 		  class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
 		<property name="basename" value="classpath:messages" />
 		<property name="defaultEncoding" value="UTF-8" />
-	</bean>
-
-	<bean id="eagleClient" class="com.sfr.ecom360.eagle.client.EagleClient">
-		<property name="statsd" ref="statsd" />
-		<property name="applicationPrefix" value="app.poly.dyna-mock.#{systemProperties['jvm.route']?:'all'}" />
-		<property name="businessPrefix" value="biz.poly.dyna-mock" />
-	</bean>
-	<bean id="statsd" class="com.timgroup.statsd.NonBlockingStatsDClient" destroy-method="stop">
-		<constructor-arg index="0" value="" />
-		<constructor-arg index="1" value="#{systemProperties['statsd.host']?:'localhost'}" />
-		<constructor-arg index="2" value="#{systemProperties['statsd.port']?:'8125'}" />
 	</bean>
 
 </beans>

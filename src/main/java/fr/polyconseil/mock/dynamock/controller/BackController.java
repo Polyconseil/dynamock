@@ -1,7 +1,8 @@
-package com.sfr.bol.dynamock.controller;
+package fr.polyconseil.mock.dynamock.controller;
 
-import com.sfr.bol.dynamock.model.Mock;
-import com.sfr.bol.dynamock.service.MockService;
+import fr.polyconseil.mock.dynamock.model.Mock;
+import fr.polyconseil.mock.dynamock.service.MockService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;

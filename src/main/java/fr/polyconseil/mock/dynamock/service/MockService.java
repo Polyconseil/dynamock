@@ -1,6 +1,7 @@
-package com.sfr.bol.dynamock.service;
+package fr.polyconseil.mock.dynamock.service;
 
-import com.sfr.bol.dynamock.model.Mock;
+import fr.polyconseil.mock.dynamock.model.Mock;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;

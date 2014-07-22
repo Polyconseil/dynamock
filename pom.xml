@@ -3,22 +3,16 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<groupId>com.sfr.bol</groupId>
-		<artifactId>boutique-mobile-parent</artifactId>
-		<version>1.0.0</version>
-	</parent>
 
-
+	<groupId>fr.polyconseil.mock</groupId>
 	<artifactId>dyna-mock</artifactId>
 	<packaging>war</packaging>
 	<name>Moteur de mocks</name>
 	<version>1.0.0-SNAPSHOT</version>
 
 	<scm>
-		<connection>scm:svn:http://svn.sfrdev.fr/sfr/applications/poly/misc/dyna-mock/trunk/</connection>
-		<developerConnection>scm:svn:http://svn.sfrdev.fr/sfr/applications/poly/misc/dyna-mock/trunk/</developerConnection>
-		<url>http://svn.sfrdev.fr/sfr/applications/poly/misc/dyna-mock/trunk/</url>
+		<connection>scm:git:git://github.com/Polyconseil/dynamock.git</connection>
+		<url>https://github.com/Polyconseil/dynamock.git</url>
 	</scm>
 
 	<build>
@@ -71,10 +65,6 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>sonar-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<configuration>
 					<skipTests>true</skipTests>
@@ -85,6 +75,21 @@
 
 	<properties>
 		<project.version>${project.version}</project.version>
+		<!-- ========== COMMON PROPERTIES ========== -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- spring -->
+		<spring.version>3.2.2.RELEASE</spring.version>
+		<spring-data.version>1.2.0.RELEASE</spring-data.version>
+		<spring-security.version>3.1.4.RELEASE</spring-security.version>
+		<!-- log -->
+		<slf4j.version>1.6.4</slf4j.version>
+		<logback.version>1.0.0</logback.version>
+		<!-- web -->
+		<jsp.version>2.0</jsp.version>
+		<servlet.version>2.4</servlet.version>
+		<jackson.version>1.9.0</jackson.version>
+		<jstl.version>1.1.2</jstl.version>
+		<commons.beanutils.version>1.8.3</commons.beanutils.version>
 	</properties>
 
 	<profiles>
@@ -126,11 +131,6 @@
 		<!-- ==================================== Intra-projet ===================================== -->
 		<!-- ======================================================================================= -->
 
-		<dependency>
-			<groupId>com.sfr.bol</groupId>
-			<artifactId>rest-service</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
 
 		<!-- ======================================================================================= -->
 		<!-- ==================================== Apache =========================================== -->
@@ -152,57 +152,64 @@
 		<!-- ==================================== Spring =========================================== -->
 		<!-- ======================================================================================= -->
 
-		<dependency>
+<!-- 		<dependency>
 			<groupId>org.springframework.ws</groupId>
 			<artifactId>spring-ws-core</artifactId>
 			<version>2.1.2.RELEASE</version>
-		</dependency>
+		</dependency> -->
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-beans</artifactId>
+			<version>${spring.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-core</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-taglibs</artifactId>
+			<version>${spring.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-mongodb</artifactId>
+			<version>${spring-data.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${spring-security.version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${spring-security.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>${spring-security.version}</version>
+		</dependency>
 		<!-- ======================================================================================= -->
 		<!-- ==================================== WEB ============================================== -->
 		<!-- ======================================================================================= -->
@@ -211,41 +218,51 @@
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jsp-api</artifactId>
+			<version>${jsp.version}</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
+			<version>${servlet.version}</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>taglibs</groupId>
 			<artifactId>standard</artifactId>
+			<version>${jstl.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
+			<version>${jstl.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>commons-beanutils</groupId>
 			<artifactId>commons-beanutils</artifactId>
+			<version>${commons.beanutils.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>
+			<version>${slf4j.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>log4j-over-slf4j</artifactId>
+			<version>${slf4j.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
+			<version>${logback.version}</version>
 		</dependency>
 
 		<dependency>
@@ -257,6 +274,7 @@
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>
+			<version>${jackson.version}</version>
 		</dependency>
 
 		<dependency>

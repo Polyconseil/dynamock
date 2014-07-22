@@ -1,13 +1,13 @@
 /*
  * Copyright (c) 2013 SFR. Tous droits résérvés.
  */
-package com.sfr.bol.dynamock.controller;
+package fr.polyconseil.mock.dynamock.controller;
 
-import com.sfr.bol.dynamock.model.Mock;
-import com.sfr.bol.dynamock.model.Request;
-import com.sfr.bol.dynamock.service.MockService;
+import fr.polyconseil.mock.dynamock.model.Mock;
+import fr.polyconseil.mock.dynamock.model.Request;
+import fr.polyconseil.mock.dynamock.service.MockService;
+
 import org.apache.commons.lang3.StringUtils;
-import org.omg.PortableInterceptor.RequestInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Map;

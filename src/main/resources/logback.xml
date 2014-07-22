@@ -28,7 +28,7 @@
 	<!-- ========== LOGGERS ========== -->
 	<!-- Les appender sont configués dans la conf externe catalina.properties -->
 
-	<logger name="com.sfr.bol" level="DEBUG">
+	<logger name="fr.polyconseil.mock" level="DEBUG">
 	</logger>
 
 	<root level="ERROR">

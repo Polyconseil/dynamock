@@ -1,4 +1,4 @@
-package com.sfr.bol.dynamock.model;
+package fr.polyconseil.mock.dynamock.model;
 
 
 import java.util.HashMap;
