@@ -1,6 +1,6 @@
 var API_ROOT = 'api';
 
-var app = angular.module('labelEngineApp', ['ui.router', 'ui.bootstrap', 'ui.ace']);
+var app = angular.module('dynamockApp', ['ui.router', 'ui.bootstrap', 'ui.ace']);
 
 app.config(['$locationProvider', '$stateProvider', '$urlRouterProvider',
     function($locationProvider, $stateProvider, $urlRouterProvider) {

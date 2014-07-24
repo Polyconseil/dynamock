@@ -1,17 +1,17 @@
 package fr.polyconseil.mock.dynamock.service;
 
-import fr.polyconseil.mock.dynamock.model.Mock;
+import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
-import java.util.Collection;
-import java.util.Date;
+import fr.polyconseil.mock.dynamock.model.Mock;
 
-@Service
+@Repository
 public class MockService {
 
 	@Autowired

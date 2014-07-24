@@ -1,48 +1,44 @@
 package fr.polyconseil.mock.dynamock.controller;
 
+import java.util.Collection;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import javax.jws.Oneway;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
 import fr.polyconseil.mock.dynamock.model.Mock;
 import fr.polyconseil.mock.dynamock.service.MockService;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.Collection;
-
-@Controller
+@RestController
 public class BackController {
 
-	@Autowired
-	private MockService mockService;
+	@Autowired private MockService mockService;
 
-	@RequestMapping(value = "supervision.jsp", method = RequestMethod.GET)
-	@ResponseBody
-	public String supervision() {
+	@RequestMapping(value = "supervision.jsp", method = RequestMethod.GET) public String supervision() {
 		return "ok";
 	}
 
-	@RequestMapping(value = "api/mock", method = RequestMethod.GET)
-	@ResponseBody
-	public Collection<Mock> list() {
+	@RequestMapping(value = "/api/mock", method = RequestMethod.GET) public Collection<Mock> list() {
 		return mockService.list();
 	}
 
-	@RequestMapping(value = "api/mock/{id:.+}", method = RequestMethod.GET)
-	@ResponseBody
-	public Mock get(@PathVariable String id) {
-		return mockService.get(id);
+	@RequestMapping(value = "/api/mock/{id:.+}", method = RequestMethod.GET) public Mock get(@PathVariable String id) {
+		Mock mock = mockService.get(id);
+		return mock;
 	}
 
-	@RequestMapping(value = "api/mock/{id:.+}", method = RequestMethod.DELETE)
-	@ResponseBody
-	public void delete(@PathVariable String labelId) {
+	@RequestMapping(value = "/api/mock/{id:.+}", method = RequestMethod.DELETE) public void delete(@PathVariable String labelId) {
 		mockService.delete(labelId);
 	}
 
-	@RequestMapping(value = "api/mock", method = RequestMethod.POST)
-	@ResponseBody
-	public void save(@RequestBody Mock mock) {
+	@RequestMapping(value = "/api/mock", method = RequestMethod.POST) public void save(@RequestBody Mock mock) {
 		mockService.save(mock);
 	}
-
 }

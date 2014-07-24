@@ -90,7 +90,7 @@ function MockUpdateCtrl(    $scope,   $state,   $stateParams,   mockService,   $
         //paramétrage de la pop-up d'ajout/modification
         $rootScope.messages.push({
             headerContent: 'Confirmation', 
-            bodyContent: 'La modification/l\'ajout de l\'élément a été réalisée avec succès.' 
+            bodyContent: 'La modification l\'ajout de l\'élément a été réalisée avec succès.' 
         });
       });
     };
