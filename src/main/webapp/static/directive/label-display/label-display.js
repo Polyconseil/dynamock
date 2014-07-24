@@ -3,7 +3,7 @@ app.directive('labelDisplay', ['$sce', function($sce) {
     restrict: 'E',
     replace: true,
     controller: 'LabelDisplayCtrl',
-    templateUrl: 'static/directive/label-display/label-display.html',
+    templateUrl: '/directive/label-display/label-display.html',
     scope: {
       label: '=',
       size: '='

@@ -14,20 +14,20 @@ app.config(['$locationProvider', '$stateProvider', '$urlRouterProvider',
   $stateProvider
     .state('dashboard', {
       url: "/",
-      templateUrl: "static/modules/dashboard/dashboard.html"
+      templateUrl: "/modules/dashboard/dashboard.html"
     })
     .state('mock', {
       abstract: true,
       url: "/mock",
-      templateUrl: "static/modules/mock/mock.html"
+      templateUrl: "/modules/mock/mock.html"
     })
     .state('mock.list', {
       url: "", // L'url vide signifie qu'il sera utilisé quand on arrive sur l'url du parent
-      templateUrl: "static/modules/mock/list.html"
+      templateUrl: "/modules/mock/list.html"
     })
     .state('mock.upsert', {
       url: "/{mockId:[a-zA-Z0-9_.-]+}",
-      templateUrl: "static/modules/mock/upsert.html"
+      templateUrl: "/modules/mock/upsert.html"
     });
 
 }]);

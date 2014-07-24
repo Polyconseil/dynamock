@@ -3,7 +3,7 @@ app.directive('confirmModal', ['$sce', function($sce) {
     restrict: 'E',
     replace: true,
     controller: 'ConfirmModalCtrl',
-    templateUrl: 'static/directive/confirm-modal/confirm-modal.html',
+    templateUrl: '/directive/confirm-modal/confirm-modal.html',
     scope: {}
   };
 }]);

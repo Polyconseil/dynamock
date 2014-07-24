@@ -3,7 +3,7 @@ app.directive('criteriaValues', function() {
     restrict: 'E',
     replace: true,
     controller: 'CriteriaValuesInputCtrl',
-    templateUrl: 'static/directive/criteria-values/criteria-values.html',
+    templateUrl: '/directive/criteria-values/criteria-values.html',
     scope: {
       values: '=',
       selected: '='
