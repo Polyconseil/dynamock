@@ -1,5 +1,7 @@
 package fr.polyconseil.mock.dynamock.app;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
@@ -9,8 +11,11 @@ import org.springframework.context.annotation.Configuration;
 @EnableAutoConfiguration
 @ComponentScan(basePackages="fr.polyconseil.mock")
 public class DynamockStarter {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(DynamockStarter.class);
 
 	public static void main(String[] args) throws Exception {
+		LOGGER.info("Start Dyna-mock app");
 	    SpringApplication app = new SpringApplication(DynamockStarter.class);
         app.setShowBanner(false);
         app.run(args);
