@@ -1,6 +1,5 @@
 package fr.polyconseil.mock.dynamock.model;
 
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,5 +36,22 @@ public class Response {
 
 	public void setBody(String body) {
 		this.body = body;
+	}
+
+	public String guessContentType() {
+		for (int idx = 0 ; idx < body.length() ; idx++) {
+			char c = body.charAt(idx);
+			switch (c) {
+				case ' ':
+					continue;
+				case '<':
+					return "application/xml;charset=UTF-8";
+				case '{':
+					return "application/json;charset=UTF-8";
+				case '[':
+					return "application/json;charset=UTF-8";
+			}
+		}
+		return "text/html;charset=UTF-8";
 	}
 }
