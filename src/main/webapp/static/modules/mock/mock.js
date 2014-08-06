@@ -34,6 +34,8 @@ function MockListCtrl(    $scope,   mockService,   $rootScope) {
     mockService.list().then(function(data) {
       $scope.mocks = data;
     });
+    
+    $scope.predicate = 'namespace';
 
     $scope.delete = function(mockId) {
       if (confirm("Êtes vous certain de vouloir supprimer le mock ?")) {
