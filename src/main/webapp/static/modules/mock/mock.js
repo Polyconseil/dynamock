@@ -84,6 +84,7 @@ function MockUpdateCtrl(    $scope,   $state,   $stateParams,   mockService,   $
       }
 
       $scope.mock = mock;
+      $scope.contentType= mock.response.responseType?mock.response.responseType:"text/html";
     });
 
 

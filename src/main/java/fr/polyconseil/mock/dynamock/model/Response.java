@@ -10,6 +10,8 @@ public class Response {
 	private Map<String, String> headers;
 
 	private String body;
+	
+	private String responseType;
 
 	public Integer getStatus() {
 		return status;
@@ -53,5 +55,13 @@ public class Response {
 			}
 		}
 		return "text/html;charset=UTF-8";
+	}
+	
+	public String getResponseType(){
+		if (body==null){
+			responseType= "text/html";
+		}
+		responseType= guessContentType().split(";")[0];
+		return responseType;
 	}
 }

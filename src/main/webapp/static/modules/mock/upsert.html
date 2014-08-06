@@ -52,11 +52,30 @@
 				</div>
 			</div>
 		</div>
-
-		<div class="row col-lg-12" style="background-color: #333; padding: 12px; margin-bottom: 24px;">
+		
+		<div class="row col-lg-12">
+			<div class="form-group">
+				<label class="col-lg-2" style="font-weight: bold">Pattern url</label>
+				<div class="col-lg-10">
+					<select ng-model="contentType">
+						<option value="text/html">HTML</option>
+						<option value="application/xml">XML</option>
+						<option value="application/json">JSON</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row col-lg-12" style="background-color: #333; padding: 12px; margin-bottom: 24px;" ng-show='contentType=="application/xml"'>
 			<div ui-ace="{mode: 'xml', useWrapMode: true}" ng-model="mock.response.body" style="width: 1110px; min-height: 600px;"></div>
 		</div>
-
+		<div class="row col-lg-12" style="background-color: #333; padding: 12px; margin-bottom: 24px;" ng-show='contentType=="application/json"'>
+			<div ui-ace="{mode: 'json', useWrapMode: true}" ng-model="mock.response.body" style="width: 1110px; min-height: 600px;"></div>
+		</div>
+		<div class="row col-lg-12" style="background-color: #333; padding: 12px; margin-bottom: 24px;" ng-show='contentType=="text/html"'>
+			<div ui-ace="{mode: 'html', useWrapMode: true}" ng-model="mock.response.body" style="width: 1110px; min-height: 600px;"></div>
+		</div>
+		
 		<div class="form-group" style="text-align: right;">
 			<button type="submit" class="btn btn-default">Mettre à jour</button>
 		</div>
