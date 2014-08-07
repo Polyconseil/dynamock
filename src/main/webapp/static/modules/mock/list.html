@@ -3,13 +3,15 @@
     <table class="table table-striped">
         <tr>
             <th style="width: 30px;"><a ui-sref="mock.upsert({mockId: tempId})"><span class="glyphicon glyphicon-plus"></span></a></th>
-            <th style="width: 225px;"><a href="" ng-click="predicate='namespace';reverse=!reverse">Namespace</a><br><input ng-model="search.namespace"></th>
-			<th style="width: 225px;"><a href="" ng-click="predicate='name';reverse=!reverse">Nom</a><br><input ng-model="search.name"></th>
-			<th style="width: 225px;"><a href="" ng-click="predicate='owner';reverse=!reverse">Créer par</a><br><input ng-model="search.owner"></th>
-            <th><a href="" ng-click="predicate='description';reverse=!reverse">Description</a><br><input ng-model="search.description"></th>
-			<th><a href="" ng-click="predicate='update';reverse=!reverse">Modif</a></th>
+            <th><a href="" ng-click="predicate='namespace';reverse=!reverse">Namespace</a><br><input style="width: 150px" ng-model="search.namespace"></th>
+			<th ><a href="" ng-click="predicate='name';reverse=!reverse">Nom</a><br><input  style="width: 150px;"ng-model="search.name"></th>
+			<th ><a href="" ng-click="predicate='owner';reverse=!reverse">Créer par</a><br><input style="width: 150px;" ng-model="search.owner"></th>
+            <th><a href="" ng-click="predicate='description';reverse=!reverse">Description</a><br><input style="width: 150px;" ng-model="search.description"></th>
+            <th style="width: 150px;">Url pattern</th>
+            <th style="width: 150px;">Body pattern</th>
+			<th  style="width: 130px;"><a href="" ng-click="predicate='update';reverse=!reverse">Modif</a></th>
         </tr>
-        <tr ng-repeat="mock in mocks | filter:search:strict | orderBy:predicate:reverse">
+        <tr ng-repeat="mock in mocks |  filter:search | orderBy:predicate:reverse">
             <td>
                 <a ui-sref="mock.upsert({mockId: mock.id})"><span class="glyphicon glyphicon-pencil"></span></a><br>
                 <a ng-click="delete(mock.id)" style="cursor: pointer;"><span class="glyphicon glyphicon-trash" style="color: red;"></span></a>
@@ -18,6 +20,8 @@
 			<td style="font-size: 10px; font-weight: bold;">{{mock.name}}</td>
 			<td style="font-size: 10px; font-weight: bold;">{{mock.owner}}</td>
             <td style="font-size: 10px;"><span ng-bind-html="mock.description | nl2br"></span></td>
+            <td style="font-size: 10px;">{{mock.request.urlPattern}}</td>
+            <td style="font-size: 10px;">{{mock.request.bodyPattern}}</td>
 			<td style="font-size: 10px; font-weight: bold;">{{mock.update | date:'yyyy-MM-dd HH:mm'}}</td>
         </tr>
     </table>

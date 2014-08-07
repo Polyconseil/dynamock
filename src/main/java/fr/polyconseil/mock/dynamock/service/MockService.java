@@ -25,7 +25,7 @@ public class MockService {
 	public Collection<Mock> list() {
 		// On limite le nombre de champs récupérés de la base
 		Query q = new Query();
-		q.fields().include("_id").include("namespace").include("owner").include("name").include("description").include("update");
+		q.fields().include("_id").include("namespace").include("owner").include("name").include("description").include("update").include("request.urlPattern").include("request.bodyPattern");
 		return mongoTemplate.find(q, Mock.class);
 	}
 
