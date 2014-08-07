@@ -2,10 +2,6 @@ package fr.polyconseil.mock.dynamock.controller;
 
 import java.util.Collection;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
-import javax.jws.Oneway;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,8 +30,8 @@ public class BackController {
 		return mock;
 	}
 
-	@RequestMapping(value = "/api/mock/{id:.+}", method = RequestMethod.DELETE) public void delete(@PathVariable String labelId) {
-		mockService.delete(labelId);
+	@RequestMapping(value = "/api/mock/{id:.+}", method = RequestMethod.DELETE) public void delete(@PathVariable String id) {
+		mockService.delete(id);
 	}
 
 	@RequestMapping(value = "/api/mock", method = RequestMethod.POST) public void save(@RequestBody Mock mock) {
