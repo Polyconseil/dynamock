@@ -8,8 +8,7 @@ import java.util.Date;
 @Document(collection = "mock")
 public class Mock {
 
-	@Id
-	private String id;
+	@Id private String id;
 
 	private String namespace;
 
@@ -24,6 +23,8 @@ public class Mock {
 	private Request request;
 
 	private Response response;
+
+	private String owner;
 
 	public String getId() {
 		return id;
@@ -87,5 +88,13 @@ public class Mock {
 
 	public void setResponse(Response response) {
 		this.response = response;
+	}
+
+	public String getOwner() {
+		return owner;
+	}
+
+	public void setOwner(String owner) {
+		this.owner = owner;
 	}
 }
