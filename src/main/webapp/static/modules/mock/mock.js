@@ -64,6 +64,17 @@ function MockUpdateCtrl(    $scope,   $state,   $stateParams,   mockService,   $
      * Initialisation et sauvegarde
      */
     var mockId = $stateParams.mockId;
+    
+    var namespaces=[];
+    mockService.list().then(function(data) {
+        $.each(data, function(i, elem) {
+            if ($.inArray(elem.namespace, namespaces) == -1) {
+            	namespaces.push(elem.namespace);
+            }
+
+          });
+      });
+    $scope.namespaces=namespaces;
 
     mockService.get(mockId).then(function(mock) {
 
