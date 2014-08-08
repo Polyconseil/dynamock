@@ -35,10 +35,3 @@ body {
 	border: 1px solid grey;
 	width: 60px;
 }
-
-
-body .ui-state-focus{
-	background : none !important;
-	color: black !important;
-	border: none !important;
-}
