@@ -34,7 +34,9 @@ app.config(['$locationProvider', '$stateProvider', '$urlRouterProvider',
 
 app.filter('nl2br', function($sce) {
   return function(val) {
-    return $sce.trustAsHtml(val.replace(/\n/g, "<br>"));
+	  if(val){
+		  return $sce.trustAsHtml(val.replace(/\n/g, "<br>"));
+	  }
   };
 });
 
