@@ -3,7 +3,7 @@ package fr.polyconseil.mock.dynamock.model;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Response {
+public class Response  implements Cloneable{
 
 	private Integer status;
 
@@ -63,5 +63,17 @@ public class Response {
 		}
 		responseType= guessContentType().split(";")[0];
 		return responseType;
+	}
+	
+	public Object clone(){
+		Response response =null;
+		try{
+			response=(Response) super.clone();
+		}catch(CloneNotSupportedException ex) {
+	      	// Ne devrait jamais arriver car nous implémentons 
+	      	// l'interface Cloneable
+	      	return null;
+	    }
+		return response;
 	}
 }

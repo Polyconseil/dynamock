@@ -1,12 +1,12 @@
 package fr.polyconseil.mock.dynamock.model;
 
+import java.util.Date;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.Date;
-
 @Document(collection = "mock")
-public class Mock {
+public class Mock implements Cloneable {
 
 	@Id private String id;
 
@@ -96,5 +96,23 @@ public class Mock {
 
 	public void setOwner(String owner) {
 		this.owner = owner;
+	}
+
+	public Object clone() {
+		Mock mock = null;
+		try {
+			mock = (Mock) super.clone();
+		} catch (CloneNotSupportedException ex) {
+			// Ne devrait jamais arriver car nous implémentons
+			// l'interface Cloneable
+			return null;
+		}
+		if (request != null) {
+			mock.request = (Request) request.clone();
+		}
+		if (response != null) {
+			mock.response = (Response) response.clone();
+		}
+		return mock;
 	}
 }

@@ -15,6 +15,11 @@ app.factory('mockService', ['$http', function($http) {
         return result.data;
       });
     },
+    duplicate : function(mockId){
+        return $http.get(API_ROOT+'/mock/duplicate/'+mockId).then(function(result) {
+            return result.data;
+          });
+    },
     save: function(mock) {
       return $http.post(API_ROOT+'/mock/', mock);
 
@@ -28,8 +33,8 @@ function MockCtrl(    $scope) {
   $scope.tempId = (Date.now()-1392854400000)+'-'+Math.ceil(Math.random()*1000);
 }]);
 
-app.controller('MockListCtrl', ['$scope', 'mockService', '$rootScope',
-function MockListCtrl(    $scope,   mockService,   $rootScope) {
+app.controller('MockListCtrl', ['$scope','$state', 'mockService', '$rootScope',
+function MockListCtrl(    $scope,   $state,   mockService,   $rootScope) {
 
     mockService.list().then(function(data) {
       $scope.mocks = data;
@@ -54,6 +59,20 @@ function MockListCtrl(    $scope,   mockService,   $rootScope) {
         });
       }
     }
+    
+    $scope.duplicate = function(mockId) {
+        if (confirm("Êtes vous certain de vouloir dupliquer le mock ?")) {
+          mockService.duplicate(mockId).then(function(data) {
+        	  //reidrect
+        	  $state.go('mock.upsert',{"mockId":data.id});
+            //paramétrage de la pop-up de suppression
+            $rootScope.messages.push({
+                headerContent: 'Confirmation', 
+                bodyContent: 'La duplication de l\'élément a été réalisée avec succès.' 
+            });
+          });
+        }
+      }
 
   }]);
 

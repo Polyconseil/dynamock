@@ -1,5 +1,7 @@
 package fr.polyconseil.mock.dynamock.service;
 
+import java.text.DecimalFormat;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 
@@ -44,5 +46,18 @@ public class MockService {
 	public void delete(String id) {
 		Query query = new Query(Criteria.where("_id").is(id));
 		mongoTemplate.remove(query, Mock.class);
+	}
+	
+	
+	public Mock duplicate(String id){
+		Mock mock = get(id);
+		Mock newMock=(Mock) mock.clone();
+		//new id 
+		//TODO voir avec Henri la stratégie de génération des Id.
+		DecimalFormat decimalFormat=new DecimalFormat("#.#");
+		String newId= String.valueOf(Calendar.getInstance().getTimeInMillis()-1392854400000l)+'-'+String.valueOf(decimalFormat.format(Math.ceil(Math.random()*1000)));
+		newMock.setId(newId);
+		save(newMock);
+		return newMock;
 	}
 }

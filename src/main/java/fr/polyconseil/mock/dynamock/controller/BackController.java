@@ -37,4 +37,8 @@ public class BackController {
 	@RequestMapping(value = "/api/mock", method = RequestMethod.POST) public void save(@RequestBody Mock mock) {
 		mockService.save(mock);
 	}
+	
+	@RequestMapping(value = "/api/mock/duplicate/{id:.+}", method = RequestMethod.GET) public Mock duplicate(@PathVariable String id) {
+		return mockService.duplicate(id);
+	}
 }

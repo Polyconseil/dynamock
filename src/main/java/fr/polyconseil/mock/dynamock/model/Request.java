@@ -1,6 +1,6 @@
 package fr.polyconseil.mock.dynamock.model;
 
-public class Request {
+public class Request implements Cloneable{
 
 	private String method;
 
@@ -30,5 +30,17 @@ public class Request {
 
 	public void setBodyPattern(String bodyPattern) {
 		this.bodyPattern = bodyPattern;
+	}
+	
+	public Object clone(){
+		Request request =null;
+		try{
+			request=(Request) super.clone();
+		}catch(CloneNotSupportedException ex) {
+	      	// Ne devrait jamais arriver car nous implémentons 
+	      	// l'interface Cloneable
+	      	return null;
+	    }
+		return request;
 	}
 }
