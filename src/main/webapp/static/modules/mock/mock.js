@@ -66,15 +66,21 @@ function MockUpdateCtrl(    $scope,   $state,   $stateParams,   mockService,   $
     var mockId = $stateParams.mockId;
     
     var namespaces=[];
+    var owners=[];
     mockService.list().then(function(data) {
         $.each(data, function(i, elem) {
+        	//alimenter la liste autocomplete des namespaces
             if ($.inArray(elem.namespace, namespaces) == -1) {
             	namespaces.push(elem.namespace);
             }
-
+            //alimenter la liste autocomplete des owner
+            if ($.inArray(elem.owner, owners) == -1) {
+            	owners.push(elem.owner);
+            }            
           });
       });
     $scope.namespaces=namespaces;
+    $scope.owners=owners;
 
     mockService.get(mockId).then(function(mock) {
 
