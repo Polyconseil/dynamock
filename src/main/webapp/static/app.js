@@ -51,3 +51,16 @@ app.filter('stringify', function() {
     return JSON.stringify(input, null, 2);
   };
 });
+
+/**
+ * Indexe de début d'une sous liste.	
+ */
+app.filter('startFrom', function() {
+    return function(input, start) {
+        if(input) {
+            start = +start; //parse to int
+            return input.slice(start);
+        }
+        return [];
+    }
+});

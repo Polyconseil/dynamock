@@ -3,15 +3,15 @@
     <table class="table table-striped">
         <tr>
             <th style="width: 30px;"><a ui-sref="mock.upsert({mockId: tempId})"><span class="glyphicon glyphicon-plus"></span></a></th>
-            <th><a href="" ng-click="predicate='namespace';reverse=!reverse">Namespace</a><br><input style="width: 150px" ng-model="search.namespace"></th>
-			<th ><a href="" ng-click="predicate='name';reverse=!reverse">Nom</a><br><input  style="width: 150px;"ng-model="search.name"></th>
-			<th ><a href="" ng-click="predicate='owner';reverse=!reverse">Créer par</a><br><input style="width: 150px;" ng-model="search.owner"></th>
-            <th><a href="" ng-click="predicate='description';reverse=!reverse">Description</a><br><input style="width: 150px;" ng-model="search.description"></th>
+            <th><a href="" ng-click="predicate='namespace';reverse=!reverse">Namespace</a><br><input style="width: 150px" ng-model="search.namespace"  ng-change="filter()"></th>
+			<th ><a href="" ng-click="predicate='name';reverse=!reverse">Nom</a><br><input  style="width: 150px;"ng-model="search.name"  ng-change="filter()"></th>
+			<th ><a href="" ng-click="predicate='owner';reverse=!reverse">Créer par</a><br><input style="width: 150px;" ng-model="search.owner"  ng-change="filter()"></th>
+            <th><a href="" ng-click="predicate='description';reverse=!reverse">Description</a><br><input style="width: 150px;" ng-model="search.description"   ng-change="filter()"></th>
             <th style="width: 150px;">Url pattern</th>
             <th style="width: 150px;">Body pattern</th>
 			<th  style="width: 130px;"><a href="" ng-click="predicate='update';reverse=!reverse">Modif</a></th>
         </tr>
-        <tr ng-repeat="mock in mocks |  filter:search | orderBy:predicate:reverse">
+        <tr ng-repeat=" mock in filtered = ( mocks | filter:search | orderBy:predicate:reverse)  | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit ">
             <td>
                 <a ui-sref="mock.upsert({mockId: mock.id})" title="Mettre à jour"><span class="glyphicon glyphicon-pencil"></span></a><br>
                 <a ng-click="duplicate(mock.id)"  style="cursor: pointer;" title="Dupliquer"><span class="glyphicon glyphicon-repeat"></span></a><br>
@@ -24,6 +24,7 @@
             <td style="font-size: 10px;">{{mock.request.urlPattern}}</td>
             <td style="font-size: 10px;">{{mock.request.bodyPattern}}</td>
 			<td style="font-size: 10px; font-weight: bold;">{{mock.update | date:'yyyy-MM-dd HH:mm'}}</td>
-        </tr>
+        </tr>         	
     </table>
+         	<pagination total-items="totalItems" ng-model="currentPage" items-per-page="entryLimit" ></pagination>
 </div>
