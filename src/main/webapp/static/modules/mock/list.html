@@ -13,9 +13,9 @@
         </tr>
         <tr ng-repeat=" mock in filtered = ( mocks | filter:search | orderBy:predicate:reverse)  | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit ">
             <td>
-                <a ui-sref="mock.upsert({mockId: mock.id})" title="Mettre à jour"><span class="glyphicon glyphicon-pencil"></span></a><br>
-                <a ng-click="duplicate(mock.id)"  style="cursor: pointer;" title="Dupliquer"><span class="glyphicon glyphicon-repeat"></span></a><br>
-                <a ng-click="delete(mock.id)" style="cursor: pointer;" title="Supprimer"><span class="glyphicon glyphicon-trash" style="color: red;"></span></a>
+                <a ui-sref="mock.upsert({mockId: mock.id})" tooltip="Mettre à jour"><span class="glyphicon glyphicon-pencil"></span></a><br>
+                <a ng-click="duplicate(mock.id)"  style="cursor: pointer;" tooltip="Dupliquer"><span class="glyphicon glyphicon-repeat"></span></a><br>
+                <a ng-click="delete(mock.id)" style="cursor: pointer;" tooltip="Supprimer"><span class="glyphicon glyphicon-trash" style="color: red;"></span></a>
             </td>
             <td style="font-size: 10px; font-weight: bold;">{{mock.namespace}}</td>
 			<td style="font-size: 10px; font-weight: bold;">{{mock.name}}</td>

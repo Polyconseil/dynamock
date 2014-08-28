@@ -25,6 +25,8 @@ public class Mock implements Cloneable {
 	private Response response;
 
 	private String owner;
+	
+	private Integer priority;
 
 	public String getId() {
 		return id;
@@ -96,6 +98,16 @@ public class Mock implements Cloneable {
 
 	public void setOwner(String owner) {
 		this.owner = owner;
+	}
+
+	
+	public Integer getPriority() {
+		return priority;
+	}
+
+	
+	public void setPriority(Integer priority) {
+		this.priority = priority;
 	}
 
 	public Object clone() {

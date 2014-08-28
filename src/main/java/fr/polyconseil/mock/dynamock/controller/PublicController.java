@@ -4,12 +4,17 @@
 package fr.polyconseil.mock.dynamock.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -66,14 +71,40 @@ public class PublicController {
 
 	private Mock matchMock(String namespace, String method, String requestUrl, String requestBody) {
 		Collection<Mock> mocks = mockService.mocksByNamespace(namespace);
+		List<Mock> matchedMocks = new ArrayList<>();
 		for (Mock mock : mocks) {
 			Request req = mock.getRequest();
 			if (StringUtils.isEmpty(req.getMethod()) || req.getMethod().equals(method)) {
 				if (MatcherUtils.match(requestUrl, req.getUrlPattern())
 					&& MatcherUtils.match(requestBody, req.getBodyPattern())) {
-					return mockService.get(mock.getId());
+					matchedMocks.add(mockService.get(mock.getId()));
 				}
 			}
+		}
+		if (CollectionUtils.isNotEmpty(matchedMocks)) {
+			Collections.sort(matchedMocks, new Comparator<Mock>() {
+
+				@Override public int compare(Mock o1, Mock o2) {
+					int result;
+					if (o1.getPriority() == null && o2.getPriority() == null) {
+						result = 0;
+					} else {
+						if (o1.getPriority() == null) {
+							return 1;
+						}
+						if (o2.getPriority() == null) {
+							return -1;
+						}
+						result = o1.getPriority().compareTo(o2.getPriority());
+					}
+					// Si on a la même priorité alors on prend le mock le plus récent
+					if (result == 0) {
+						result = o2.getUpdate().compareTo(o1.getUpdate());
+					}
+					return result;
+				}
+			});
+			return matchedMocks.get(0);
 		}
 		return null;
 	}
